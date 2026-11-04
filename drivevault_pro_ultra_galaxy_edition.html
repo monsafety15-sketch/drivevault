@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="th" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DriveVault Pro - Cyber Glassmorphism Hub</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts: Prompt & JetBrains Mono -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google API & Identity Client Libraries -->
+    <script src="https://apis.google.com/js/api.js" async defer></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#05070D',
+                        darkPanel: 'rgba(13, 19, 33, 0.75)',
+                        darkBorder: '#1E293B',
+                        neonCyan: '#06b6d4',
+                        neonViolet: '#8b5cf6',
+                        neonEmerald: '#10b981',
+                        neonPink: '#ec4899'
+                    },
+                    fontFamily: {
+                        sans: ['Prompt', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    boxShadow: {
+                        'neon-cyan': '0 0 25px -3px rgba(6, 182, 212, 0.5)',
+                        'neon-violet': '0 0 25px -3px rgba(139, 92, 246, 0.5)',
+                        'neon-pink': '0 0 25px -3px rgba(236, 72, 153, 0.5)',
+                        'neon-emerald': '0 0 25px -3px rgba(16, 185, 129, 0.5)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #020208;
+            color: #F1F5F9;
+            font-family: 'Prompt', sans-serif;
+            /* High-Res Deep Cosmic Galaxy Wallpaper with Multi-Layer Gradient Overlays */
+            background-image: 
+                linear-gradient(to bottom, rgba(2, 2, 8, 0.72), rgba(5, 7, 18, 0.85)),
+                radial-gradient(circle at 50% 30%, rgba(168, 85, 247, 0.18), transparent 60%),
+                radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.15), transparent 50%),
+                url('https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated Live Cosmic Dust Particles */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background-image: 
+                radial-gradient(1.5px 1.5px at 15% 20%, rgba(255, 255, 255, 0.9), transparent),
+                radial-gradient(2px 2px at 35% 65%, rgba(34, 211, 238, 0.8), transparent),
+                radial-gradient(1px 1px at 55% 15%, rgba(255, 255, 255, 0.7), transparent),
+                radial-gradient(2.5px 2.5px at 75% 80%, rgba(236, 72, 153, 0.85), transparent),
+                radial-gradient(1.5px 1.5px at 88% 35%, rgba(168, 85, 247, 0.9), transparent);
+            background-size: 600px 600px;
+            animation: cosmicFloat 25s linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes cosmicFloat {
+            0% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-30px) scale(1.03); }
+            100% { transform: translateY(0) scale(1); }
+        }
+
+        /* Ultra Cyber Glassmorphism Effect with Glowing Border */
+        .glass-panel {
+            background: rgba(10, 14, 28, 0.75);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+        }
+
+        .glass-panel-hover:hover {
+            border-color: rgba(6, 182, 212, 0.6);
+            box-shadow: 0 0 35px -5px rgba(6, 182, 212, 0.4), inset 0 0 15px rgba(6, 182, 212, 0.15);
+        }
+
+        /* Custom Cyber Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #010204;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1E293B;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a855f7;
+        }
+
+        .animated-gradient-text {
+            background: linear-gradient(135deg, #22d3ee 0%, #a855f7 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Large Dynamic Icon Enclosers (5x Size) */
+        .icon-box-5x {
+            width: 140px;
+            height: 140px;
+            font-size: 5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .icon-box-5x img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .icon-box-preview-5x {
+            width: 180px;
+            height: 180px;
+            font-size: 6.5rem;
+        }
+
+        /* Icon-First Card Specifics */
+        .cyber-icon-card {
+            aspect-ratio: 1 / 1;
+            display: flex;
+            flex-col: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cyber-icon-card:hover {
+            transform: translateY(-5px) scale(1.02);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-purple-500 selection:text-white">
+
+    <!-- Header Navigation Bar -->
+    <header class="sticky top-0 z-40 glass-panel border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between py-4">
+                
+                <!-- Brand Logo (Icons enlarged 5x) -->
+                <div class="flex items-center space-x-4 group cursor-pointer" onclick="switchTab('links')">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-cyan-500 via-indigo-600 to-violet-600 p-[2px] shadow-neon-cyan transition-all group-hover:scale-105">
+                        <div class="w-full h-full bg-slate-950 rounded-2xl flex items-center justify-center">
+                            <i class="fa-solid fa-hard-drive text-3xl text-cyan-400"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex items-center space-x-2">
+                            <span class="font-extrabold text-2xl tracking-wider animated-gradient-text">DRIVEVAULT</span>
+                            <span class="text-xs font-mono px-2.5 py-0.5 rounded-full bg-cyan-950/80 text-cyan-400 border border-cyan-800/60 uppercase">PRO 3.0</span>
+                        </div>
+                        <p class="text-xs text-slate-400 font-light">Futuristic Link & Drive Asset Hub</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Tabs -->
+                <nav class="hidden md:flex p-2 rounded-2xl bg-slate-950/80 border border-slate-800/80">
+                    <button onclick="switchTab('links')" id="nav-links" class="tab-btn px-6 py-2.5 rounded-xl text-xs font-semibold transition-all flex items-center space-x-2.5 text-cyan-400 bg-slate-900 border border-cyan-500/30 shadow-neon-cyan">
+                        <i class="fa-solid fa-compass text-base"></i>
+                        <span>คลังลิ้งก์ (Links)</span>
+                    </button>
+                    <button onclick="switchTab('files')" id="nav-files" class="tab-btn px-6 py-2.5 rounded-xl text-xs font-semibold transition-all flex items-center space-x-2.5 text-slate-400 hover:text-white">
+                        <i class="fa-solid fa-folder-tree text-base"></i>
+                        <span>ไฟล์ & Google Drive</span>
+                    </button>
+                    <button onclick="switchTab('settings')" id="nav-settings" class="tab-btn px-6 py-2.5 rounded-xl text-xs font-semibold transition-all flex items-center space-x-2.5 text-slate-400 hover:text-white">
+                        <i class="fa-solid fa-sliders text-base"></i>
+                        <span>ตั้งค่า Drive API</span>
+                    </button>
+                </nav>
+
+                <!-- Auth & Status Indicator -->
+                <div class="flex items-center space-x-3">
+                    <div id="drive-auth-btn-container">
+                        <button onclick="handleDriveAuth()" id="drive-auth-btn" class="px-5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-xs font-mono text-cyan-300 hover:bg-slate-800 transition flex items-center space-x-2 shadow-neon-cyan">
+                            <i class="fa-brands fa-google text-base"></i>
+                            <span id="auth-btn-text">Connect Drive</span>
+                        </button>
+                    </div>
+
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-3 rounded-xl bg-slate-900 border border-slate-800 text-slate-300">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-2 bg-slate-950/95 border-b border-slate-800">
+            <button onclick="switchTab('links'); toggleMobileMenu()" class="w-full text-left px-4 py-3 rounded-xl font-medium text-cyan-400 bg-slate-900 border border-cyan-500/30 flex items-center space-x-3">
+                <i class="fa-solid fa-compass w-6 text-center text-lg"></i>
+                <span>คลังลิ้งก์ (Links)</span>
+            </button>
+            <button onclick="switchTab('files'); toggleMobileMenu()" class="w-full text-left px-4 py-3 rounded-xl font-medium text-slate-300 hover:bg-slate-900 flex items-center space-x-3">
+                <i class="fa-solid fa-folder-tree w-6 text-center text-lg"></i>
+                <span>ไฟล์ & Google Drive</span>
+            </button>
+            <button onclick="switchTab('settings'); toggleMobileMenu()" class="w-full text-left px-4 py-3 rounded-xl font-medium text-slate-300 hover:bg-slate-900 flex items-center space-x-3">
+                <i class="fa-solid fa-sliders w-6 text-center text-lg"></i>
+                <span>ตั้งค่า Drive API</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Notification Toast Container -->
+    <div id="toast-container" class="fixed top-24 right-5 z-50 space-y-3 pointer-events-none"></div>
+
+    <!-- Main Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- ==================== TAB 1: LINKS & BOOKMARKS ==================== -->
+        <section id="tab-links" class="tab-content space-y-6">
+            
+            <!-- Link Toolbar -->
+            <div class="glass-panel p-4 sm:p-5 rounded-3xl border border-slate-800 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+                
+                <!-- Search Bar -->
+                <div class="relative flex-grow max-w-lg">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 text-base"></i>
+                    <input type="text" id="link-search" oninput="renderLinks()" placeholder="ค้นหาชื่อลิ้งก์, URL หรือแท็ก..." 
+                        class="w-full pl-12 pr-4 py-3 rounded-2xl bg-slate-950/80 border border-slate-800 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition">
+                </div>
+
+                <!-- Category Filters & Add Button -->
+                <div class="flex items-center space-x-3 overflow-x-auto pb-1 md:pb-0">
+                    <select id="link-category-filter" onchange="renderLinks()" 
+                        class="px-4 py-3 rounded-2xl bg-slate-950/80 border border-slate-800 text-xs font-mono text-cyan-300 focus:outline-none focus:border-cyan-500">
+                        <option value="ALL">ทุกหมวดหมู่ (All Categories)</option>
+                    </select>
+
+                    <button onclick="openFolderModal('link')" class="px-4 py-3 rounded-2xl bg-slate-900 hover:bg-slate-800 text-slate-300 font-bold text-xs border border-slate-700 transition flex items-center space-x-2 shrink-0">
+                        <i class="fa-solid fa-folder-plus text-base text-cyan-400"></i>
+                        <span>+ หมวดหมู่</span>
+                    </button>
+
+                    <button onclick="openLinkModal()" class="px-6 py-3 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-xs shadow-neon-cyan transition-all flex items-center space-x-2 shrink-0">
+                        <i class="fa-solid fa-plus text-base"></i>
+                        <span>เพิ่มลิ้งก์ใหม่</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Links Grid (Rendered with 5x Enlarged Icons) -->
+            <div id="links-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6"></div>
+
+            <!-- Empty Links Placeholder -->
+            <div id="links-empty" class="hidden text-center py-20 glass-panel rounded-3xl border border-dashed border-slate-800">
+                <div class="w-24 h-24 mx-auto mb-4 rounded-3xl bg-slate-900 border border-slate-800 flex items-center justify-center text-cyan-400 text-5xl shadow-neon-cyan">
+                    <i class="fa-solid fa-icons"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-200">ยังไม่มีรายการลิ้งก์ในหมวดหมู่นี้</h3>
+                <p class="text-xs text-slate-500 mt-1">เริ่มต้นเพิ่มลิ้งก์ใหม่หรือสร้างหมวดหมู่การใช้งานของคุณได้เลย</p>
+                <button onclick="openLinkModal()" class="mt-6 px-6 py-3 rounded-xl bg-cyan-500 text-slate-950 font-bold text-xs shadow-neon-cyan">
+                    + เพิ่มลิ้งก์แรก
+                </button>
+            </div>
+        </section>
+
+
+        <!-- ==================== TAB 2: FILES & GOOGLE DRIVE BROWSER ==================== -->
+        <section id="tab-files" class="tab-content hidden space-y-6">
+            
+            <!-- Storage & Status Banner -->
+            <div class="glass-panel p-6 rounded-3xl border border-slate-800 bg-gradient-to-r from-slate-900 via-indigo-950/30 to-slate-900 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+                <div class="space-y-2 max-w-xl">
+                    <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-mono">
+                        <i class="fa-brands fa-google-drive text-sm"></i>
+                        <span id="drive-mode-tag">LOCAL STORAGE FALLBACK</span>
+                    </div>
+                    <h2 class="text-xl font-extrabold text-white">ระบบจัดการไฟล์และ Google Drive Cloud Storage</h2>
+                    <p class="text-xs text-slate-400 font-light leading-relaxed">
+                        จัดหมวดหมู่ไฟล์ ลากวางเพื่ออัพโหลด ดูตัวอย่างไฟล์ (Preview) และเรียกดูไฟล์จริงโดยตรงจากบัญชี Google Drive ของคุณ
+                    </p>
+                </div>
+
+                <!-- Drive Storage Progress -->
+                <div class="w-full lg:w-80 bg-slate-950/80 p-5 rounded-2xl border border-slate-800 space-y-3">
+                    <div class="flex justify-between items-center text-xs font-mono">
+                        <span class="text-slate-400 flex items-center space-x-2">
+                            <i class="fa-solid fa-cloud text-base text-cyan-400"></i>
+                            <span>Drive Storage</span>
+                        </span>
+                        <span id="storage-text-usage" class="text-cyan-300 font-bold">0.0 MB / 15 GB</span>
+                    </div>
+                    <div class="w-full bg-slate-900 h-2.5 rounded-full overflow-hidden border border-slate-800">
+                        <div id="storage-bar" class="bg-gradient-to-r from-cyan-500 to-violet-500 h-full w-2% transition-all duration-500"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- File Upload Drag Zone -->
+            <div id="drop-zone" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)"
+                onclick="triggerFileInput()"
+                class="border-2 border-dashed border-slate-800 hover:border-cyan-500/60 bg-slate-950/40 hover:bg-slate-900/50 rounded-3xl p-10 text-center transition-all cursor-pointer group">
+                <div class="w-24 h-24 mx-auto mb-4 rounded-3xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 group-hover:text-cyan-400 group-hover:scale-110 group-hover:shadow-neon-cyan transition-all">
+                    <i class="fa-solid fa-cloud-arrow-up text-5xl"></i>
+                </div>
+                <h3 class="text-base font-bold text-slate-200">ลากและวางไฟล์ตรงนี้ หรือคลิกเพื่ออัพโหลด</h3>
+                <p class="text-xs text-slate-500 mt-1">รองรับไฟล์เอกสาร, รูปภาพ, PDF, วิดีโอ หรือ Zip (อัพโหลดตรงเข้า Google Drive เมื่อเชื่อมต่อ)</p>
+                <input type="file" id="file-input-element" class="hidden" multiple onchange="handleFileSelect(event)">
+            </div>
+
+            <!-- Upload Queue -->
+            <div id="upload-progress-container" class="space-y-3 hidden">
+                <h4 class="text-xs font-mono font-bold text-cyan-400 uppercase tracking-widest">สถานะการอัพโหลด (Uploading Queue)</h4>
+            </div>
+
+            <!-- Folders & Category Bar -->
+            <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-sm font-bold text-slate-300 font-mono uppercase tracking-wider flex items-center space-x-2">
+                        <i class="fa-solid fa-folder-tree text-base text-cyan-400"></i>
+                        <span>หมวดหมู่ไฟล์ (File Folders)</span>
+                    </h3>
+                    <button onclick="openFolderModal('file')" class="text-xs text-cyan-400 hover:underline font-mono">
+                        + สร้างโฟลเดอร์ใหม่
+                    </button>
+                </div>
+                <div id="file-folders-bar" class="flex items-center space-x-3 overflow-x-auto pb-2"></div>
+            </div>
+
+            <!-- File Explorer List / Grid Toggle Toolbar -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pt-2">
+                <div class="relative flex-grow max-w-md">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 text-sm"></i>
+                    <input type="text" id="file-search" oninput="renderFiles()" placeholder="ค้นหาไฟล์ในคลัง..." 
+                        class="w-full pl-11 pr-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-200 focus:outline-none focus:border-cyan-500">
+                </div>
+
+                <div class="flex items-center justify-between sm:justify-end space-x-3">
+                    <button onclick="syncGoogleDriveFiles()" id="sync-drive-btn" class="px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 hover:border-cyan-500/50 text-xs text-cyan-300 font-mono transition flex items-center space-x-2">
+                        <i class="fa-solid fa-arrows-rotate text-sm"></i>
+                        <span>Sync Drive</span>
+                    </button>
+
+                    <div class="flex items-center bg-slate-950 p-1 rounded-xl border border-slate-800">
+                        <button onclick="setFileViewMode('grid')" id="btn-view-grid" class="p-2 rounded-lg text-sm text-cyan-400 bg-slate-800">
+                            <i class="fa-solid fa-border-all w-5 text-center"></i>
+                        </button>
+                        <button onclick="setFileViewMode('list')" id="btn-view-list" class="p-2 rounded-lg text-sm text-slate-500 hover:text-slate-200">
+                            <i class="fa-solid fa-list w-5 text-center"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- File Display Container -->
+            <div id="files-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+
+            <!-- Empty File Placeholder -->
+            <div id="files-empty" class="hidden text-center py-20 glass-panel rounded-3xl border border-dashed border-slate-800">
+                <i class="fa-solid fa-folder-open text-6xl text-slate-600 mb-4 block"></i>
+                <p class="text-sm font-medium text-slate-400">ยังไม่มีรายการไฟล์ในหมวดหมู่นี้</p>
+                <button onclick="triggerFileInput()" class="mt-4 px-5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-xs text-cyan-400 hover:bg-slate-800">
+                    + อัพโหลดไฟล์เข้าสู่ระบบ
+                </button>
+            </div>
+        </section>
+
+
+        <!-- ==================== TAB 3: DRIVE API CONFIG & OAUTH ==================== -->
+        <section id="tab-settings" class="tab-content hidden space-y-6">
+            <div class="glass-panel rounded-3xl border border-slate-800 p-6 sm:p-8 max-w-3xl mx-auto space-y-6">
+                <div>
+                    <div class="flex items-center space-x-4 mb-2">
+                        <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 flex items-center justify-center text-2xl shadow-neon-cyan">
+                            <i class="fa-solid fa-key"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-lg font-bold text-slate-100">การตั้งค่า Google Drive Cloud API & OAuth2</h2>
+                            <p class="text-xs text-slate-400">บริหารการเชื่อมต่อคลาวด์และพื้นที่จัดเก็บข้อมูลแบบ Client-side</p>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="border-slate-800">
+
+                <form onsubmit="saveDriveSettings(event)" class="space-y-5">
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-slate-400 mb-2">
+                            Google Client ID (OAuth 2.0)
+                        </label>
+                        <input type="text" id="config-client-id" placeholder="123456789-xxx.apps.googleusercontent.com"
+                            class="w-full px-4 py-3 rounded-2xl bg-slate-950 border border-slate-800 text-xs font-mono text-cyan-300 focus:outline-none focus:border-cyan-500">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-slate-400 mb-2">
+                            Google API Key
+                        </label>
+                        <input type="password" id="config-api-key" placeholder="AIzaSyXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+                            class="w-full px-4 py-3 rounded-2xl bg-slate-950 border border-slate-800 text-xs font-mono text-cyan-300 focus:outline-none focus:border-cyan-500">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-slate-400 mb-2">
+                            Target Drive Folder ID (ไม่ระบุ = โฟลเดอร์หลัก)
+                        </label>
+                        <input type="text" id="config-folder-id" placeholder="1A2b3C4d5E6f7G8h9I0j..."
+                            class="w-full px-4 py-3 rounded-2xl bg-slate-950 border border-slate-800 text-xs font-mono text-cyan-300 focus:outline-none focus:border-cyan-500">
+                    </div>
+
+                    <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <button type="button" onclick="resetDriveSettings()" class="px-4 py-2 text-xs font-mono text-rose-400 hover:bg-rose-950/30 rounded-xl transition">
+                            <i class="fa-solid fa-rotate-left mr-1"></i> สลับเป็น Local Storage Mode
+                        </button>
+                        <button type="submit" class="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-xs rounded-2xl shadow-neon-cyan transition-all">
+                            <i class="fa-solid fa-floppy-disk mr-1.5"></i> บันทึกการเชื่อมต่อ
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==================== MODAL 1: ADD/EDIT LINK & CUSTOM ICON ==================== -->
+    <div id="link-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="glass-panel w-full max-w-lg rounded-3xl border border-slate-800 overflow-hidden shadow-2xl space-y-0">
+            
+            <div class="px-6 py-4 bg-slate-950/90 border-b border-slate-800 flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-link"></i>
+                    </div>
+                    <h3 id="link-modal-title" class="font-bold text-sm text-slate-100">เพิ่มรายการลิ้งก์ใหม่</h3>
+                </div>
+                <button onclick="closeLinkModal()" class="text-slate-400 hover:text-white p-1">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <form onsubmit="handleSaveLink(event)" class="p-6 space-y-4 max-h-[80vh] overflow-y-auto">
+                <input type="hidden" id="modal-link-id">
+
+                <div>
+                    <label class="block text-[11px] font-mono uppercase text-slate-400 mb-1">ชื่อเว็บไซต์ / รายการ</label>
+                    <input type="text" id="modal-link-title" required placeholder="เช่น GitHub, Figma, Drive" 
+                        class="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-200 focus:outline-none focus:border-cyan-500">
+                </div>
+
+                <div>
+                    <label class="block text-[11px] font-mono uppercase text-slate-400 mb-1">URL (ลิงก์ปลายทาง)</label>
+                    <input type="url" id="modal-link-url" required placeholder="https://example.com" 
+                        class="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs font-mono text-cyan-400 focus:outline-none focus:border-cyan-500">
+                </div>
+
+                <!-- Custom Icon Picker (With Upload & Preview Box) -->
+                <div class="p-4 rounded-2xl bg-slate-950/80 border border-slate-800/80 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <label class="block text-xs font-mono uppercase text-cyan-400 font-bold">
+                            <i class="fa-solid fa-icons mr-1 text-sm"></i> ไอคอนแบบใหญ่พิเศษ (Icon Upload)
+                        </label>
+                    </div>
+
+                    <div id="icon-preview-box" class="w-36 h-36 mx-auto rounded-3xl bg-slate-900 border border-cyan-500/50 flex items-center justify-center text-cyan-400 text-6xl shadow-neon-cyan transition-all overflow-hidden p-2">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+
+                    <!-- Icon Mode Switcher -->
+                    <div class="grid grid-cols-3 gap-2 text-[11px] font-mono">
+                        <button type="button" onclick="setIconMode('preset')" id="btn-icon-preset" class="py-2 rounded-lg bg-slate-800 text-cyan-400 border border-cyan-500/30 font-bold">
+                            คลังไอคอน
+                        </button>
+                        <button type="button" onclick="setIconMode('upload')" id="btn-icon-upload" class="py-2 rounded-lg bg-slate-900 text-slate-400 border border-slate-800">
+                            อัพโหลดรูป
+                        </button>
+                        <button type="button" onclick="setIconMode('custom')" id="btn-icon-custom" class="py-2 rounded-lg bg-slate-900 text-slate-400 border border-slate-800">
+                            URL / Class
+                        </button>
+                    </div>
+
+                    <!-- Icon Preset Panel -->
+                    <div id="icon-preset-panel" class="grid grid-cols-6 gap-2.5 pt-1">
+                        <!-- Dynamic Presets -->
+                    </div>
+
+                    <!-- Icon Upload Panel -->
+                    <div id="icon-upload-panel" class="hidden space-y-2 pt-1 text-center">
+                        <label for="icon-file-input" class="cursor-pointer block border-2 border-dashed border-slate-800 hover:border-cyan-500/60 bg-slate-900/60 p-4 rounded-xl transition">
+                            <i class="fa-solid fa-image text-2xl text-cyan-400 mb-1"></i>
+                            <span class="block text-xs font-medium text-slate-300">คลิกเลือกรูปภาพเพื่อใช้เป็นไอคอน</span>
+                            <span class="block text-[10px] text-slate-500">รองรับ PNG, JPG, SVG, WebP</span>
+                        </label>
+                        <input type="file" id="icon-file-input" accept="image/*" class="hidden" onchange="handleIconFileUpload(event)">
+                    </div>
+
+                    <!-- Icon Custom URL/Class Panel -->
+                    <div id="icon-custom-panel" class="hidden space-y-2 pt-1">
+                        <input type="text" id="modal-link-icon-custom" oninput="updateIconPreview()" placeholder="เช่น fa-solid fa-rocket หรือ https://.../logo.png" 
+                            class="w-full px-3 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-xs font-mono text-slate-200 focus:outline-none focus:border-cyan-500">
+                        <p class="text-[10px] text-slate-500">ใส่คลาส FontAwesome 6 หรือ URL รูปภาพออนไลน์</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-[11px] font-mono uppercase text-slate-400 mb-1">หมวดหมู่</label>
+                        <select id="modal-link-category" 
+                            class="w-full px-3 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-200 focus:outline-none focus:border-cyan-500">
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-mono uppercase text-slate-400 mb-1">แท็ก (คั่นด้วย ,)</label>
+                        <input type="text" id="modal-link-tags" placeholder="เช่น Work, Urgent" 
+                            class="w-full px-3 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-200 focus:outline-none focus:border-cyan-500">
+                    </div>
+                </div>
+
+                <div class="pt-2 flex justify-end space-x-3">
+                    <button type="button" onclick="closeLinkModal()" class="px-4 py-2 rounded-xl text-slate-400 hover:text-white text-xs font-mono">
+                        ยกเลิก
+                    </button>
+                    <button type="submit" class="px-5 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-xs rounded-xl shadow-neon-cyan transition-all">
+                        บันทึกข้อมูล
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==================== MODAL 2: CREATE NEW FOLDER / CATEGORY ==================== -->
+    <div id="folder-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="glass-panel w-full max-w-sm rounded-3xl border border-slate-800 overflow-hidden shadow-2xl space-y-0">
+            <div class="px-6 py-4 bg-slate-950/90 border-b border-slate-800 flex justify-between items-center">
+                <h3 class="font-bold text-sm text-slate-100 flex items-center space-x-2">
+                    <i class="fa-solid fa-folder-plus text-cyan-400 text-base"></i>
+                    <span>สร้างหมวดหมู่ใหม่</span>
+                </h3>
+                <button onclick="closeFolderModal()" class="text-slate-400 hover:text-white p-1">
+                    <i class="fa-solid fa-xmark text-base"></i>
+                </button>
+            </div>
+            <form onsubmit="handleSaveFolder(event)" class="p-6 space-y-4">
+                <input type="hidden" id="modal-folder-target-type">
+                <div>
+                    <label class="block text-[11px] font-mono uppercase text-slate-400 mb-1">ชื่อหมวดหมู่ / โฟลเดอร์</label>
+                    <input type="text" id="modal-folder-name" required placeholder="เช่น โปรเจกต์ปี 2026, เอกสารสำคัญ" 
+                        class="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-200 focus:outline-none focus:border-cyan-500">
+                </div>
+                <div class="pt-2 flex justify-end space-x-2">
+                    <button type="button" onclick="closeFolderModal()" class="px-4 py-2 rounded-xl text-slate-400 hover:text-white text-xs font-mono">
+                        ยกเลิก
+                    </button>
+                    <button type="submit" class="px-5 py-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs rounded-xl shadow-neon-cyan">
+                        สร้างหมวดหมู่
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==================== MODAL 3: FILE PREVIEW MODAL ==================== -->
+    <div id="preview-modal" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="glass-panel w-full max-w-4xl h-[85vh] rounded-3xl border border-slate-800 overflow-hidden flex flex-col shadow-2xl">
+            <div class="px-6 py-4 bg-slate-950 border-b border-slate-800 flex items-center justify-between">
+                <div class="flex items-center space-x-3 truncate">
+                    <div id="preview-file-icon" class="text-cyan-400 text-2xl"></div>
+                    <span id="preview-file-title" class="font-bold text-sm text-slate-100 truncate"></span>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <a id="preview-download-btn" href="#" target="_blank" download class="px-4 py-2 rounded-xl bg-cyan-500 text-slate-950 font-bold text-xs flex items-center space-x-2 shadow-neon-cyan">
+                        <i class="fa-solid fa-download text-sm"></i>
+                        <span>ดาวน์โหลด</span>
+                    </a>
+                    <button onclick="closePreviewModal()" class="text-slate-400 hover:text-white p-1">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="preview-body" class="flex-grow p-4 bg-slate-950/50 overflow-auto flex items-center justify-center">
+                <!-- Dynamic Preview Frame / Image -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Application JavaScript Code -->
+    <script>
+        // Preset Icon Catalog
+        const PRESET_ICONS = [
+            'fa-solid fa-globe', 'fa-solid fa-briefcase', 'fa-solid fa-graduation-cap',
+            'fa-solid fa-rocket', 'fa-solid fa-code', 'fa-brands fa-github',
+            'fa-brands fa-youtube', 'fa-brands fa-google-drive', 'fa-brands fa-figma',
+            'fa-solid fa-database', 'fa-solid fa-laptop-code', 'fa-solid fa-layer-group',
+            'fa-solid fa-folder', 'fa-solid fa-image', 'fa-solid fa-video',
+            'fa-solid fa-music', 'fa-solid fa-chart-pie', 'fa-solid fa-bolt'
+        ];
+
+        // Local Storage Keys
+        const STORAGE_LINKS = 'drivevault_v3_links';
+        const STORAGE_FILES = 'drivevault_v3_files';
+        const STORAGE_CATEGORIES = 'drivevault_v3_categories';
+        const STORAGE_CONFIG = 'drivevault_v3_config';
+
+        // Initial Seed Categories
+        const defaultCategories = {
+            linkCategories: ['งาน', 'การศึกษา', 'ความบันเทิง', 'เครื่องมือ', 'ทั่วไป'],
+            fileFolders: ['ทั้งหมด', 'เอกสาร', 'รูปภาพ', 'สื่อวิดีโอ', 'งานออกแบบ', 'ทั่วไป']
+        };
+
+        // Initial Seed Links
+        const initialLinks = [
+            { id: '1', title: 'Google Drive Console', url: 'https://drive.google.com', category: 'เครื่องมือ', icon: 'fa-brands fa-google-drive', description: 'แดชบอร์ดหลักสำหรับบริหารจัดการ Google Drive', tags: ['Cloud', 'Drive'], createdAt: new Date().toISOString() },
+            { id: '2', title: 'GitHub Workspaces', url: 'https://github.com', category: 'งาน', icon: 'fa-brands fa-github', description: 'คลังซอร์สโค้ดและระบบควมคุมเวอร์ชัน', tags: ['Dev', 'Code'], createdAt: new Date().toISOString() },
+            { id: '3', title: 'Figma Design Hub', url: 'https://figma.com', category: 'เครื่องมือ', icon: 'fa-brands fa-figma', description: 'เครื่องมือออกแบบ UI/UX ระบบดิจิทัล', tags: ['UI', 'UX'], createdAt: new Date().toISOString() }
+        ];
+
+        // State Machine
+        let state = {
+            links: [],
+            files: [],
+            categories: defaultCategories,
+            config: { clientId: '', apiKey: '', folderId: '' },
+            activeLinkCategory: 'ALL',
+            activeFileFolder: 'ทั้งหมด',
+            fileViewMode: 'grid',
+            selectedIcon: 'fa-solid fa-globe',
+            iconMode: 'preset',
+            accessToken: null,
+            gapiInited: false,
+            gisInited: false,
+            tokenClient: null
+        };
+
+        // --- Lifecycle Initialization ---
+        window.onload = () => {
+            loadState();
+            renderPresetIcons();
+            renderLinkCategories();
+            renderFileFolders();
+            renderLinks();
+            renderFiles();
+            updateDriveBadge();
+            initGoogleClientLibraries();
+        };
+
+        function loadState() {
+            const savedLinks = localStorage.getItem(STORAGE_LINKS);
+            state.links = savedLinks ? JSON.parse(savedLinks) : initialLinks;
+
+            const savedFiles = localStorage.getItem(STORAGE_FILES);
+            state.files = savedFiles ? JSON.parse(savedFiles) : [];
+
+            const savedCat = localStorage.getItem(STORAGE_CATEGORIES);
+            if (savedCat) state.categories = JSON.parse(savedCat);
+
+            const savedConfig = localStorage.getItem(STORAGE_CONFIG);
+            if (savedConfig) {
+                state.config = JSON.parse(savedConfig);
+                document.getElementById('config-client-id').value = state.config.clientId || '';
+                document.getElementById('config-api-key').value = state.config.apiKey || '';
+                document.getElementById('config-folder-id').value = state.config.folderId || '';
+            }
+        }
+
+        function saveState() {
+            localStorage.setItem(STORAGE_LINKS, JSON.stringify(state.links));
+            localStorage.setItem(STORAGE_FILES, JSON.stringify(state.files));
+            localStorage.setItem(STORAGE_CATEGORIES, JSON.stringify(state.categories));
+            localStorage.setItem(STORAGE_CONFIG, JSON.stringify(state.config));
+        }
+
+        // --- Navigation ---
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = 'tab-btn px-6 py-2.5 rounded-xl text-xs font-semibold transition-all flex items-center space-x-2.5 text-slate-400 hover:text-white';
+            });
+            const activeBtn = document.getElementById(`nav-${tabId}`);
+            if (activeBtn) {
+                activeBtn.className = 'tab-btn px-6 py-2.5 rounded-xl text-xs font-semibold transition-all flex items-center space-x-2.5 text-cyan-400 bg-slate-900 border border-cyan-500/30 shadow-neon-cyan';
+            }
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        // --- Render Icons Utility ---
+        function renderIconHTML(iconStr, extraClass = '') {
+            if (!iconStr) return `<i class="fa-solid fa-globe ${extraClass}"></i>`;
+            if (iconStr.startsWith('http://') || iconStr.startsWith('https://') || iconStr.startsWith('data:image')) {
+                return `<img src="${iconStr}" class="w-full h-full object-contain p-2 rounded-2xl" onerror="this.onerror=null;this.src='https://placehold.co/150x150/0F172A/06b6d4?text=Icon';">`;
+            }
+            return `<i class="${iconStr} ${extraClass}"></i>`;
+        }
+
+        // --- Category Management ---
+        function renderLinkCategories() {
+            const selectFilter = document.getElementById('link-category-filter');
+            const selectModal = document.getElementById('modal-link-category');
+
+            if (!selectFilter || !selectModal) return;
+
+            let filterOpts = `<option value="ALL">ทุกหมวดหมู่ (All Categories)</option>`;
+            let modalOpts = '';
+
+            state.categories.linkCategories.forEach(cat => {
+                filterOpts += `<option value="${cat}">${cat}</option>`;
+                modalOpts += `<option value="${cat}">${cat}</option>`;
+            });
+
+            selectFilter.innerHTML = filterOpts;
+            selectModal.innerHTML = modalOpts;
+        }
+
+        // --- Link Vault Logic (ICON-FIRST DESIGN) ---
+        function renderLinks() {
+            const grid = document.getElementById('links-grid');
+            const emptyState = document.getElementById('links-empty');
+            const search = document.getElementById('link-search').value.toLowerCase();
+            const category = document.getElementById('link-category-filter').value;
+
+            const filtered = state.links.filter(link => {
+                const matchSearch = link.title.toLowerCase().includes(search) || 
+                                    link.url.toLowerCase().includes(search) ||
+                                    (link.tags && link.tags.some(t => t.toLowerCase().includes(search)));
+                const matchCat = category === 'ALL' || link.category === category;
+                return matchSearch && matchCat;
+            });
+
+            grid.innerHTML = '';
+            if (filtered.length === 0) {
+                emptyState.classList.remove('hidden');
+            } else {
+                emptyState.classList.add('hidden');
+                filtered.forEach(link => {
+                    const card = document.createElement('div');
+                    card.className = 'glass-panel p-5 rounded-3xl border border-slate-800 glass-panel-hover cyber-icon-card flex flex-col items-center justify-between group relative';
+                    
+                    card.innerHTML = `
+                        <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-all flex items-center space-x-1 bg-slate-950 p-1 rounded-xl border border-slate-800 z-10">
+                            <button onclick="event.stopPropagation(); editLink('${link.id}')" class="p-1.5 text-slate-400 hover:text-cyan-400 rounded-lg">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <button onclick="event.stopPropagation(); deleteLink('${link.id}')" class="p-1.5 text-slate-400 hover:text-rose-400 rounded-lg">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </div>
+                        
+                        <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="w-full h-full flex flex-col items-center justify-center space-y-3 p-2 text-center">
+                            <div class="icon-box-5x text-cyan-400 group-hover:scale-110 group-hover:drop-shadow-[0_0_20px_rgba(6,182,212,0.6)] transition-all duration-300">
+                                ${renderIconHTML(link.icon)}
+                            </div>
+                            <span class="font-bold text-xs text-slate-200 group-hover:text-cyan-300 line-clamp-1 transition-colors px-2">
+                                ${link.title}
+                            </span>
+                        </a>
+                    `;
+                    grid.appendChild(card);
+                });
+            }
+        }
+
+        function renderPresetIcons() {
+            const container = document.getElementById('icon-preset-panel');
+            if (!container) return;
+            container.innerHTML = '';
+            PRESET_ICONS.forEach(iconClass => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.onclick = () => selectPresetIcon(iconClass);
+                btn.className = `p-2.5 rounded-xl bg-slate-950 border ${state.selectedIcon === iconClass ? 'border-cyan-500 text-cyan-400 shadow-neon-cyan' : 'border-slate-800 text-slate-400'} hover:text-cyan-400 hover:border-slate-700 transition flex items-center justify-center text-xl`;
+                btn.innerHTML = `<i class="${iconClass}"></i>`;
+                container.appendChild(btn);
+            });
+        }
+
+        function selectPresetIcon(iconClass) {
+            state.selectedIcon = iconClass;
+            document.getElementById('modal-link-icon-custom').value = '';
+            renderPresetIcons();
+            updateIconPreview();
+        }
+
+        function setIconMode(mode) {
+            state.iconMode = mode;
+            const btnPreset = document.getElementById('btn-icon-preset');
+            const btnUpload = document.getElementById('btn-icon-upload');
+            const btnCustom = document.getElementById('btn-icon-custom');
+            const panelPreset = document.getElementById('icon-preset-panel');
+            const panelUpload = document.getElementById('icon-upload-panel');
+            const panelCustom = document.getElementById('icon-custom-panel');
+
+            [btnPreset, btnUpload, btnCustom].forEach(b => {
+                if (b) b.className = 'py-2 rounded-lg bg-slate-900 text-slate-400 border border-slate-800';
+            });
+            [panelPreset, panelUpload, panelCustom].forEach(p => {
+                if (p) p.classList.add('hidden');
+            });
+
+            if (mode === 'preset') {
+                btnPreset.className = 'py-2 rounded-lg bg-slate-800 text-cyan-400 border border-cyan-500/30 font-bold';
+                panelPreset.classList.remove('hidden');
+            } else if (mode === 'upload') {
+                btnUpload.className = 'py-2 rounded-lg bg-slate-800 text-cyan-400 border border-cyan-500/30 font-bold';
+                panelUpload.classList.remove('hidden');
+            } else {
+                btnCustom.className = 'py-2 rounded-lg bg-slate-800 text-cyan-400 border border-cyan-500/30 font-bold';
+                panelCustom.classList.remove('hidden');
+            }
+            updateIconPreview();
+        }
+
+        function handleIconFileUpload(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (evt) => {
+                state.selectedIcon = evt.target.result;
+                updateIconPreview();
+                showToast('อัพโหลดรูปไอคอนสำเร็จ', 'success');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function updateIconPreview() {
+            const previewBox = document.getElementById('icon-preview-box');
+            if (!previewBox) return;
+            const customVal = document.getElementById('modal-link-icon-custom').value.trim();
+            const activeIcon = customVal !== '' ? customVal : state.selectedIcon;
+            previewBox.innerHTML = renderIconHTML(activeIcon);
+        }
+
+        function openLinkModal(linkId = null) {
+            document.getElementById('link-modal').classList.remove('hidden');
+            renderLinkCategories();
+
+            if (linkId) {
+                const link = state.links.find(l => l.id === linkId);
+                if (link) {
+                    document.getElementById('modal-link-id').value = link.id;
+                    document.getElementById('modal-link-title').value = link.title;
+                    document.getElementById('modal-link-url').value = link.url;
+                    document.getElementById('modal-link-category').value = link.category || 'ทั่วไป';
+                    document.getElementById('modal-link-tags').value = (link.tags || []).join(', ');
+
+                    if (PRESET_ICONS.includes(link.icon)) {
+                        state.selectedIcon = link.icon;
+                        setIconMode('preset');
+                    } else if (link.icon.startsWith('data:image')) {
+                        state.selectedIcon = link.icon;
+                        setIconMode('upload');
+                    } else {
+                        document.getElementById('modal-link-icon-custom').value = link.icon;
+                        setIconMode('custom');
+                    }
+                    document.getElementById('link-modal-title').innerText = 'แก้ไขรายการลิ้งก์';
+                }
+            } else {
+                document.getElementById('modal-link-id').value = '';
+                document.getElementById('modal-link-title').value = '';
+                document.getElementById('modal-link-url').value = '';
+                document.getElementById('modal-link-tags').value = '';
+                document.getElementById('modal-link-icon-custom').value = '';
+                state.selectedIcon = 'fa-solid fa-globe';
+                setIconMode('preset');
+                document.getElementById('link-modal-title').innerText = 'เพิ่มรายการลิ้งก์ใหม่';
+            }
+            renderPresetIcons();
+            updateIconPreview();
+        }
+
+        function closeLinkModal() {
+            document.getElementById('link-modal').classList.add('hidden');
+        }
+
+        function handleSaveLink(e) {
+            e.preventDefault();
+            const id = document.getElementById('modal-link-id').value;
+            const title = document.getElementById('modal-link-title').value.trim();
+            const url = document.getElementById('modal-link-url').value.trim();
+            const category = document.getElementById('modal-link-category').value;
+            const tagsRaw = document.getElementById('modal-link-tags').value;
+            const tags = tagsRaw.split(',').map(t => t.trim()).filter(t => t.length > 0);
+
+            const customIcon = document.getElementById('modal-link-icon-custom').value.trim();
+            const icon = customIcon !== '' ? customIcon : state.selectedIcon;
+
+            if (id) {
+                const idx = state.links.findIndex(l => l.id === id);
+                if (idx !== -1) {
+                    state.links[idx] = { ...state.links[idx], title, url, category, icon, tags };
+                    showToast('อัปเดตข้อมูลลิ้งก์สำเร็จ', 'success');
+                }
+            } else {
+                const newLink = { id: Date.now().toString(), title, url, category, icon, tags, createdAt: new Date().toISOString() };
+                state.links.unshift(newLink);
+                showToast('บันทึกลิ้งก์ใหม่เรียบร้อยแล้ว', 'success');
+            }
+
+            saveState();
+            renderLinks();
+            closeLinkModal();
+        }
+
+        function editLink(id) {
+            openLinkModal(id);
+        }
+
+        function deleteLink(id) {
+            state.links = state.links.filter(l => l.id !== id);
+            saveState();
+            renderLinks();
+            showToast('ลบรายการลิ้งก์เรียบร้อย', 'info');
+        }
+
+        function renderFileFolders() {
+            const bar = document.getElementById('file-folders-bar');
+            if (!bar) return;
+            bar.innerHTML = '';
+
+            state.categories.fileFolders.forEach(folder => {
+                const isActive = state.activeFileFolder === folder;
+                const btn = document.createElement('button');
+                btn.onclick = () => {
+                    state.activeFileFolder = folder;
+                    renderFileFolders();
+                    renderFiles();
+                };
+                btn.className = `px-4 py-2 rounded-xl text-xs font-mono font-medium shrink-0 transition-all flex items-center space-x-2 ${
+                    isActive 
+                        ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/50 shadow-neon-cyan' 
+                        : 'bg-slate-950/80 text-slate-400 border border-slate-800 hover:text-slate-200'
+                }`;
+                btn.innerHTML = `<i class="fa-solid ${folder === 'ทั้งหมด' ? 'fa-box-archive' : 'fa-folder'} text-xs"></i><span>${folder}</span>`;
+                bar.appendChild(btn);
+            });
+        }
+
+        function openFolderModal(type) {
+            document.getElementById('modal-folder-target-type').value = type;
+            document.getElementById('modal-folder-name').value = '';
+            document.getElementById('folder-modal').classList.remove('hidden');
+        }
+
+        function closeFolderModal() {
+            document.getElementById('folder-modal').classList.add('hidden');
+        }
+
+        function handleSaveFolder(e) {
+            e.preventDefault();
+            const type = document.getElementById('modal-folder-target-type').value;
+            const name = document.getElementById('modal-folder-name').value.trim();
+
+            if (!name) return;
+
+            if (type === 'link') {
+                if (!state.categories.linkCategories.includes(name)) {
+                    state.categories.linkCategories.push(name);
+                    renderLinkCategories();
+                    showToast(`เพิ่มหมวดหมู่ลิ้งก์ "${name}" สำเร็จ`, 'success');
+                }
+            } else {
+                if (!state.categories.fileFolders.includes(name)) {
+                    state.categories.fileFolders.push(name);
+                    renderFileFolders();
+                    showToast(`สร้างโฟลเดอร์ไฟล์ "${name}" สำเร็จ`, 'success');
+                }
+            }
+
+            saveState();
+            closeFolderModal();
+        }
+
+        // --- File Explorer & Drive System ---
+        function setFileViewMode(mode) {
+            state.fileViewMode = mode;
+            const btnGrid = document.getElementById('btn-view-grid');
+            const btnList = document.getElementById('btn-view-list');
+
+            if (mode === 'grid') {
+                btnGrid.className = 'p-2 rounded-lg text-sm text-cyan-400 bg-slate-800';
+                btnList.className = 'p-2 rounded-lg text-sm text-slate-500 hover:text-slate-200';
+            } else {
+                btnList.className = 'p-2 rounded-lg text-sm text-cyan-400 bg-slate-800';
+                btnGrid.className = 'p-2 rounded-lg text-sm text-slate-500 hover:text-slate-200';
+            }
+            renderFiles();
+        }
+
+        function renderFiles() {
+            const container = document.getElementById('files-container');
+            const emptyState = document.getElementById('files-empty');
+            const query = document.getElementById('file-search').value.toLowerCase();
+            const currentFolder = state.activeFileFolder;
+
+            const filtered = state.files.filter(f => {
+                const matchName = f.name.toLowerCase().includes(query);
+                const matchFolder = currentFolder === 'ทั้งหมด' || f.folder === currentFolder;
+                return matchName && matchFolder;
+            });
+
+            container.innerHTML = '';
+            if (filtered.length === 0) {
+                emptyState.classList.remove('hidden');
+            } else {
+                emptyState.classList.add('hidden');
+
+                if (state.fileViewMode === 'grid') {
+                    container.className = 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6';
+                    filtered.forEach(file => {
+                        const card = document.createElement('div');
+                        card.className = 'glass-panel p-5 rounded-3xl border border-slate-800 glass-panel-hover transition-all flex flex-col justify-between space-y-4 group relative';
+                        card.innerHTML = `
+                            <div class="space-y-3 text-center">
+                                <div class="w-20 h-20 mx-auto rounded-3xl bg-slate-950 border border-slate-800 flex items-center justify-center text-cyan-400 text-4xl shadow-neon-cyan">
+                                    <i class="${file.icon}"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-xs text-slate-100 line-clamp-1 group-hover:text-cyan-300 transition-colors" title="${file.name}">${file.name}</h4>
+                                    <div class="flex items-center justify-center space-x-2 text-[10px] font-mono text-slate-500 mt-1">
+                                        <span>${file.size}</span>
+                                        <span>•</span>
+                                        <span>${file.date}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between">
+                                <button onclick="openFilePreview('${file.id}')" class="px-3 py-1.5 rounded-xl bg-slate-900 text-cyan-400 hover:bg-cyan-500 hover:text-slate-950 text-[10px] font-mono font-bold transition">
+                                    <i class="fa-solid fa-eye mr-1"></i>PREVIEW
+                                </button>
+                                <div class="flex items-center space-x-1">
+                                    <a href="${file.url || '#'}" download="${file.name}" target="_blank" class="p-1.5 text-slate-400 hover:text-cyan-400">
+                                        <i class="fa-solid fa-download text-xs"></i>
+                                    </a>
+                                    <button onclick="deleteFile('${file.id}')" class="p-1.5 text-slate-400 hover:text-rose-400">
+                                        <i class="fa-solid fa-trash-can text-xs"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                        container.appendChild(card);
+                    });
+                } else {
+                    container.className = 'space-y-2';
+                    filtered.forEach(file => {
+                        const row = document.createElement('div');
+                        row.className = 'glass-panel p-3.5 rounded-2xl border border-slate-800 flex items-center justify-between hover:border-cyan-500/40 transition';
+                        row.innerHTML = `
+                            <div class="flex items-center space-x-3 truncate">
+                                <div class="w-10 h-10 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center text-cyan-400 text-xl">
+                                    <i class="${file.icon}"></i>
+                                </div>
+                                <div class="truncate">
+                                    <h4 class="font-bold text-xs text-slate-200 truncate">${file.name}</h4>
+                                    <span class="text-[10px] font-mono text-slate-500">${file.size} • ${file.folder || 'ทั่วไป'}</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3 shrink-0">
+                                <button onclick="openFilePreview('${file.id}')" class="px-3 py-1 rounded-xl bg-slate-900 text-cyan-400 text-[10px] font-mono font-bold">
+                                    PREVIEW
+                                </button>
+                                <button onclick="deleteFile('${file.id}')" class="text-slate-500 hover:text-rose-400">
+                                    <i class="fa-solid fa-trash-can text-xs"></i>
+                                </button>
+                            </div>
+                        `;
+                        container.appendChild(row);
+                    });
+                }
+            }
+            updateStorageUsageUI();
+        }
+
+        function triggerFileInput() {
+            document.getElementById('file-input-element').click();
+        }
+
+        function handleFileSelect(e) {
+            processUploadFiles(Array.from(e.target.files));
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.currentTarget.classList.add('border-cyan-500', 'bg-slate-900/80');
+        }
+
+        function handleDragLeave(e) {
+            e.preventDefault();
+            e.currentTarget.classList.remove('border-cyan-500', 'bg-slate-900/80');
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            e.currentTarget.classList.remove('border-cyan-500', 'bg-slate-900/80');
+            if (e.dataTransfer.files.length) {
+                processUploadFiles(Array.from(e.dataTransfer.files));
+            }
+        }
+
+        function processUploadFiles(files) {
+            const container = document.getElementById('upload-progress-container');
+            container.classList.remove('hidden');
+
+            files.forEach(file => {
+                const uploadId = 'up-' + Date.now() + '-' + Math.random().toString(36).substr(2, 4);
+                const progressCard = document.createElement('div');
+                progressCard.id = uploadId;
+                progressCard.className = 'glass-panel p-3.5 rounded-2xl border border-slate-800 space-y-2';
+                progressCard.innerHTML = `
+                    <div class="flex justify-between text-xs font-mono">
+                        <span class="text-slate-200 font-bold truncate max-w-xs">${file.name}</span>
+                        <span id="${uploadId}-status" class="text-cyan-400">0%</span>
+                    </div>
+                    <div class="w-full bg-slate-950 h-1.5 rounded-full overflow-hidden border border-slate-800">
+                        <div id="${uploadId}-bar" class="bg-gradient-to-r from-cyan-500 to-blue-500 h-full w-0 transition-all duration-200"></div>
+                    </div>
+                `;
+                container.appendChild(progressCard);
+
+                simulateOrDriveUpload(file, uploadId);
+            });
+        }
+
+        function simulateOrDriveUpload(file, uploadId) {
+            let percent = 0;
+            const interval = setInterval(() => {
+                percent += Math.floor(Math.random() * 25) + 20;
+                if (percent >= 100) {
+                    percent = 100;
+                    clearInterval(interval);
+                    
+                    document.getElementById(`${uploadId}-status`).innerText = 'DONE';
+                    document.getElementById(`${uploadId}-status`).className = 'text-emerald-400 font-mono font-bold';
+                    document.getElementById(`${uploadId}-bar`).style.width = '100%';
+
+                    const reader = new FileReader();
+                    reader.onload = (evt) => {
+                        const fileObj = {
+                            id: 'file-' + Date.now(),
+                            name: file.name,
+                            size: formatFileSize(file.size),
+                            bytes: file.size,
+                            type: file.type || getExtension(file.name),
+                            icon: getFileIcon(file.name),
+                            date: new Date().toLocaleDateString('th-TH'),
+                            folder: state.activeFileFolder === 'ทั้งหมด' ? 'ทั่วไป' : state.activeFileFolder,
+                            url: evt.target.result,
+                            isDrive: Boolean(state.accessToken)
+                        };
+
+                        state.files.unshift(fileObj);
+                        saveState();
+                        renderFiles();
+                        showToast(`อัพโหลดไฟล์ ${file.name} สำเร็จ`, 'success');
+
+                        setTimeout(() => {
+                            const el = document.getElementById(uploadId);
+                            if (el) el.remove();
+                        }, 1800);
+                    };
+                    reader.readAsDataURL(file);
+
+                } else {
+                    document.getElementById(`${uploadId}-status`).innerText = percent + '%';
+                    document.getElementById(`${uploadId}-bar`).style.width = percent + '%';
+                }
+            }, 200);
+        }
+
+        function deleteFile(id) {
+            state.files = state.files.filter(f => f.id !== id);
+            saveState();
+            renderFiles();
+            showToast('ลบรายการไฟล์เรียบร้อย', 'info');
+        }
+
+        function openFilePreview(id) {
+            const file = state.files.find(f => f.id === id);
+            if (!file) return;
+
+            document.getElementById('preview-file-title').innerText = file.name;
+            document.getElementById('preview-file-icon').innerHTML = `<i class="${file.icon}"></i>`;
+            document.getElementById('preview-download-btn').href = file.url || '#';
+
+            const body = document.getElementById('preview-body');
+            body.innerHTML = '';
+
+            if (file.type.includes('image') || file.url.startsWith('data:image')) {
+                body.innerHTML = `<img src="${file.url}" class="max-h-full max-w-full rounded-2xl border border-slate-800 object-contain">`;
+            } else if (file.type.includes('pdf')) {
+                body.innerHTML = `<iframe src="${file.url}" class="w-full h-full rounded-2xl border border-slate-800"></iframe>`;
+            } else {
+                body.innerHTML = `
+                    <div class="text-center p-8">
+                        <i class="${file.icon} text-6xl text-cyan-400 mb-4 block"></i>
+                        <p class="text-sm font-bold text-slate-200">${file.name}</p>
+                        <p class="text-xs text-slate-500 mt-1">ไฟล์ประเภทนี้เน้นการดาวน์โหลดเปิดใช้งานด้วยโปรแกรมภายนอก</p>
+                    </div>
+                `;
+            }
+
+            document.getElementById('preview-modal').classList.remove('hidden');
+        }
+
+        function closePreviewModal() {
+            document.getElementById('preview-modal').classList.add('hidden');
+        }
+
+        function updateStorageUsageUI() {
+            const totalBytes = state.files.reduce((acc, f) => acc + (f.bytes || 1024 * 500), 0);
+            const totalMB = (totalBytes / (1024 * 1024)).toFixed(1);
+            const limitGB = 15;
+            const pct = Math.min(((totalMB / (limitGB * 1024)) * 100), 100).toFixed(2);
+
+            document.getElementById('storage-text-usage').innerText = `${totalMB} MB / ${limitGB} GB`;
+            document.getElementById('storage-bar').style.width = `${Math.max(pct, 2)}%`;
+        }
+
+        function initGoogleClientLibraries() {
+            if (typeof gapi !== 'undefined') {
+                gapi.load('client', async () => {
+                    if (state.config.apiKey) {
+                        await gapi.client.init({
+                            apiKey: state.config.apiKey,
+                            discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/drive/v3/rest']
+                        });
+                        state.gapiInited = true;
+                    }
+                });
+            }
+
+            if (typeof google !== 'undefined' && google.accounts) {
+                if (state.config.clientId) {
+                    state.tokenClient = google.accounts.oauth2.initTokenClient({
+                        client_id: state.config.clientId,
+                        scope: 'https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/drive.file',
+                        callback: (response) => {
+                            if (response.access_token) {
+                                state.accessToken = response.access_token;
+                                updateDriveBadge();
+                                showToast('เชื่อมต่อ OAuth2 Google Drive สำเร็จ', 'success');
+                                syncGoogleDriveFiles();
+                            }
+                        }
+                    });
+                    state.gisInited = true;
+                }
+            }
+        }
+
+        function handleDriveAuth() {
+            if (!state.config.clientId) {
+                switchTab('settings');
+                showToast('กรุณากรอก Client ID และ API Key เพื่อเชื่อมต่อ Drive', 'info');
+                return;
+            }
+
+            if (state.tokenClient) {
+                state.tokenClient.requestAccessToken();
+            } else {
+                initGoogleClientLibraries();
+                setTimeout(() => {
+                    if (state.tokenClient) state.tokenClient.requestAccessToken();
+                }, 500);
+            }
+        }
+
+        async function syncGoogleDriveFiles() {
+            if (!state.accessToken) {
+                handleDriveAuth();
+                return;
+            }
+
+            try {
+                const res = await fetch('https://www.googleapis.com/drive/v3/files?pageSize=20&fields=files(id,name,mimeType,size,createdTime,webViewLink)', {
+                    headers: { Authorization: `Bearer ${state.accessToken}` }
+                });
+                const data = await res.json();
+
+                if (data.files) {
+                    const driveFiles = data.files.map(f => ({
+                        id: 'drive-' + f.id,
+                        name: f.name,
+                        size: f.size ? formatFileSize(parseInt(f.size)) : 'Cloud File',
+                        bytes: f.size ? parseInt(f.size) : 1024 * 1024,
+                        type: f.mimeType,
+                        icon: getFileIcon(f.name),
+                        date: new Date(f.createdTime).toLocaleDateString('th-TH'),
+                        folder: 'ทั้งหมด',
+                        url: f.webViewLink,
+                        isDrive: true
+                    }));
+
+                    state.files = [...driveFiles, ...state.files.filter(f => !f.isDrive)];
+                    saveState();
+                    renderFiles();
+                    showToast('ซิงค์ข้อมูลไฟล์จาก Google Drive เรียบร้อย', 'success');
+                }
+            } catch (err) {
+                showToast('เกิดข้อผิดพลาดในการดึงข้อมูล Drive API', 'error');
+            }
+        }
+
+        function saveDriveSettings(e) {
+            e.preventDefault();
+            state.config.clientId = document.getElementById('config-client-id').value.trim();
+            state.config.apiKey = document.getElementById('config-api-key').value.trim();
+            state.config.folderId = document.getElementById('config-folder-id').value.trim();
+
+            saveState();
+            updateDriveBadge();
+            initGoogleClientLibraries();
+            showToast('บันทึกการเชื่อมต่อ Google API แล้ว', 'success');
+        }
+
+        function resetDriveSettings() {
+            state.config = { clientId: '', apiKey: '', folderId: '' };
+            state.accessToken = null;
+            document.getElementById('config-client-id').value = '';
+            document.getElementById('config-api-key').value = '';
+            document.getElementById('config-folder-id').value = '';
+            saveState();
+            updateDriveBadge();
+            showToast('สลับเข้าสู่โหมด Local Storage Fallback', 'info');
+        }
+
+        function updateDriveBadge() {
+            const btnText = document.getElementById('auth-btn-text');
+            const modeTag = document.getElementById('drive-mode-tag');
+
+            if (!btnText || !modeTag) return;
+
+            if (state.accessToken) {
+                btnText.innerText = 'Connected';
+                modeTag.innerText = 'GOOGLE DRIVE CLOUD SYNCED';
+                modeTag.className = 'px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono';
+            } else if (state.config.clientId) {
+                btnText.innerText = 'Ready to Auth';
+                modeTag.innerText = 'API CONFIG LOADED';
+                modeTag.className = 'px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-mono';
+            } else {
+                btnText.innerText = 'Connect Drive';
+                modeTag.innerText = 'LOCAL STORAGE FALLBACK';
+                modeTag.className = 'px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-mono';
+            }
+        }
+
+        function showToast(msg, type = 'info') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'pointer-events-auto flex items-center space-x-3 px-4 py-3 rounded-2xl glass-panel border shadow-2xl transition-all duration-300 transform translate-y-2';
+
+            let iconClass = 'fa-solid fa-circle-info text-cyan-400';
+            let borderClass = 'border-cyan-500/40';
+
+            if (type === 'success') {
+                iconClass = 'fa-solid fa-circle-check text-emerald-400';
+                borderClass = 'border-emerald-500/40';
+            } else if (type === 'error') {
+                iconClass = 'fa-solid fa-triangle-exclamation text-rose-400';
+                borderClass = 'border-rose-500/40';
+            }
+
+            toast.classList.add(borderClass);
+            toast.innerHTML = `<i class="${iconClass} text-sm"></i><span class="text-xs font-mono text-slate-200">${msg}</span>`;
+
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-[-10px]');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+        }
+
+        function getExtension(filename) {
+            return filename.split('.').pop().toUpperCase();
+        }
+
+        function getFileIcon(filename) {
+            const ext = filename.split('.').pop().toLowerCase();
+            if (['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp'].includes(ext)) return 'fa-solid fa-file-image text-emerald-400';
+            if (['pdf'].includes(ext)) return 'fa-solid fa-file-pdf text-rose-400';
+            if (['doc', 'docx'].includes(ext)) return 'fa-solid fa-file-word text-blue-400';
+            if (['xls', 'xlsx'].includes(ext)) return 'fa-solid fa-file-excel text-emerald-500';
+            if (['zip', 'rar', '7z'].includes(ext)) return 'fa-solid fa-file-zipper text-amber-400';
+            if (['mp4', 'mkv', 'mov'].includes(ext)) return 'fa-solid fa-file-video text-violet-400';
+            return 'fa-solid fa-file text-cyan-400';
+        }
+    </script>
+</body>
+</html>
